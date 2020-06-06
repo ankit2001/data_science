@@ -1,18 +1,46 @@
-from urllib.request import urlopen
-from urllib.error import HTTPError , URLError
-from bs4 import BeautifulSoup
-def getKnow(url):
+from urllib.request import urlopen 
+from urllib.error import *
+from bs4 import BeautifulSoup as bs
+"""def get(url,first,sec):
     try:
         html=urlopen(url)
-        obj=BeautifulSoup(html,"lxml")
-        know=obj.h1
-    except AttributeError:
-        return None
-    except URLError:
-        return None  
-    return know     
-know=getKnow("http://pythonscraping.com/pages/page1.html")  
-if know==None:
-    print("title could not be found") 
-else:
-    print(know)     
+        pointer=bs(html.read(),"lxml")
+        content=pointer.first.sec
+        return content
+    except URLError as e:
+        print("url not found")
+    except HTTPError as e:
+        print(e)
+    except AttributeError as e:
+        print("tag not found")
+    except:
+        print("tag not found or some unexpected error")
+        """
+
+def get(url):
+    try:
+        html=urlopen(url)
+        pointer=bs(html.read(),"lxml")
+
+        content=pointer
+        return content
+    except URLError as e:
+        print("url not found")
+    except HTTPError as e:
+        print(e)
+    except AttributeError as e:
+        print("tag not found")
+    except:
+        print("tag not found or some unexpected error")     
+              
+#info=get("http://pythonscraping.com/pages/page1.html","body","h1")
+noew=get("http://pythonscraping.com/pages/page1.html")
+print(noew)
+
+
+
+
+
+
+
+

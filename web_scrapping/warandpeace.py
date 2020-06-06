@@ -1,8 +1,9 @@
-#Advanced digging
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
+#Advanced-digging
+from urllib.request import urlopen 
+from bs4 import BeautifulSoup as bs
 html=urlopen("http://pythonscraping.com/pages/warandpeace.html")
-obj=BeautifulSoup(html,"lxml")
-namelist=obj.findAll("span",{"class":"green"})
-for name in namelist:
-    print(name.get_text())
+pointer=bs(html.read(),"lxml")
+list_of_names=pointer.findAll('span',{"class":"green"})
+print(pointer)
+for names in list_of_names:
+	print(names.get_text())

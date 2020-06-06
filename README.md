@@ -1,5 +1,5 @@
 # data_science
-## This repo contains woking of various python datascience libraties on jupyter notebook
+## This repo contains woking of various python datascience libraries on jupyter notebook
 ### Numpy
 ### Pandas
 ### Matplotlib

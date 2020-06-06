@@ -1,10 +1,14 @@
+#HTTPError and URLError
 from urllib.request import urlopen 
-from urllib.error import HTTPError ,URLError
+from bs4 import BeautifulSoup
+from urllib.error import HTTPError , URLError 
 try:
-    html=urlopen("http://pythonscraping.com/pages/page1.html")
+	html=urlopen("http://pythonscraping.com/pages/page1.html")
+	pointer=BeautifulSoup(html.read(),"lxml")
+	print(pointer.h1)
 except HTTPError as e:
     print(e)
 except URLError as e:
-    print("The server could not be found")
-else:
-    print("It worked")           
+    print("url not found")
+except:
+    print("some unknown error")         	

@@ -1,13 +1,15 @@
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
+#Attribute error
+from urllib.request import urlopen 
+from bs4 import BeautifulSoup as bs
+html=urlopen("http://pythonscraping.com/pages/page1.html")
+pointer=bs(html.read(),"lxml")
+arr=None
 try:
-    html=urlopen("http://pythonscraping.com/pages/page1.html")
-    obj=BeautifulSoup(html.read(),"lxml")
-    b_content=obj.nonExistingTag.anotherTag
+	arr=pointer.first.second_tag
 except AttributeError as e:
-    print("Tag was not found")
-else:
-    if b_content==None:
-        print("Tag was not found")
+    print("Tag not found or 2nd tag not found")
+except:    
+    if arr==None:
+        print("Tag not found or 1st tag not found")
     else:
-        print(b_content)        
+        print(arr)    
